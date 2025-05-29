@@ -71,8 +71,71 @@ const tasks = [
   }
 ];
 
+const taskDetails = {
+  1: {
+    word: {
+      term: "Lobby",
+      phonetic: "/ˈlɒb.i/, sounds like 'lob-ee'",
+      definition: "A hall at a building’s entrance",
+      examples: [
+        "Meet me in the lobby",
+        "The office lobby was decorated with fresh flowers"
+      ]
+    },
+    story: {
+      title: "The Skyline Hotel",
+      narrator: "Hi, it's Hiro here. Last week, I checked into the Skyline Hotel for a business trip.",
+      paragraphs: [
+        "I pushed open the glass doors and stepped into a lobby scented with fresh coffee and jasmine. Soft jazz music played in the background."
+      ],
+      conversation: [
+        {
+          speaker: "receptionist",
+          text: "Welcome! May I have your name and booking reference, please?"
+        },
+        {
+          speaker: "guest",
+          text: "Certainly. Indoor or outdoor seating?"
+        },
+        {
+          speaker: "receptionist",
+          text: "Indoor, please. A quiet table if possible."
+        },
+        {
+          speaker: "guest",
+          text: "No problem. Do you need a high chair?"
+        },
+        {
+          speaker: "receptionist",
+          text: "No, thank you. Just a regular table."
+        },
+        {
+          speaker: "guest",
+          text: "Under what name should I book?"
+        }
+      ]
+    },
+    audio: {
+      url: "https://example.com/audio/welcoming_guests.mp3",
+      duration: "6:05"
+    }
+  },
+
+};
+// API tổng quát
 app.get('/stories', (req, res) => {
   res.json(tasks);
+});
+
+// API chi tiết cho từng bài học
+app.get('/stories/:id', (req, res) => {
+  const id = req.params.id;
+  const detail = taskDetails[id];
+  if (detail) {
+    res.json(detail);
+  } else {
+    res.status(404).json({ error: 'Story not found' });
+  }
 });
 
 app.listen(port, '0.0.0.0', () => {
