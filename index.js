@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config()
+
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 
@@ -73,6 +75,6 @@ app.get('/stories', (req, res) => {
   res.json(tasks);
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Mock API server running at http://localhost:${port}`);
 });
