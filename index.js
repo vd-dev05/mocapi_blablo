@@ -122,6 +122,215 @@ const taskDetails = {
   },
 
 };
+
+const onbroading = {
+  "steps": [
+    {
+      "step_id": "intro_commute",
+      "type": "intro",
+      "title": "Boost your speaking On the Go 🏃‍️🚴‍️🚌",
+      "sub_title": "",
+      "image_url": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/screen-1.jpg",
+      "action_label": "Let's go",
+      "next_step": "intro_traffic"
+    },
+    {
+      "step_id": "intro_traffic",
+      "type": "intro",
+      "title": "Real-life stories, Tailored for you✨",
+      "sub_title": "",
+      "image_url": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/intro_traffic.png",
+      "action_label": "Let's go",
+      "next_step": "intro_dishes"
+    },
+    {
+      "step_id": "intro_dishes",
+      "type": "intro",
+      "title": "Imagine Your own scenarios 🎨",
+      "sub_title": "",
+      "image_url": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/intro_dishes.png",
+      "action_label": "Let's go",
+      "next_step": "welcome_hero"
+    },
+    {
+      "step_id": "welcome_hero",
+      "type": "intro",
+      "title": "Welcome 🎉",
+      "sub_title": "Hey there 👋 I’m Hiro!, Ready for our adventure?",
+      "image_url": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/onboarding-mascot-4.jpg",
+      "action_label": "I'm ready",
+      "next_step": "goal_selection",
+      "character": "Hiro"
+    },
+    {
+      "step_id": "goal_selection",
+      "type": "multiple_choice",
+      "title": "What's your BIG English goals?",
+      "sub_title": "",
+      "action_label": "Continue",
+      "next_step": "cefr_level",
+      "character": "Hiro",
+      "options": [
+        {
+          "emoji": "💼",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/goal_selection/image.png",
+          "label": "Boost my career",
+          "value": "career"
+        },
+        {
+          "emoji": "🗣️",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/goal_selection/image-1.png",
+          "label": "Speak confidently in daily life",
+          "value": "daily_confidence"
+        },
+        {
+          "emoji": "✈️",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/goal_selection/image-2.png",
+          "label": "Travel and see the world",
+          "value": "travel"
+        },
+        {
+          "emoji": "🎓",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/goal_selection/image-3.png",
+          "label": "Do great at school",
+          "value": "school"
+        },
+        {
+          "emoji": "🧩",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/goal_selection/image-4.png",
+          "label": "Something else",
+          "value": "other"
+        }
+      ],
+      "character_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/goal_selection/hiro.png"
+    },
+    {
+      "step_id": "cefr_level",
+      "type": "single_choice",
+      "title": "Great! So how is your English?",
+      "sub_title": "",
+      "action_label": "Continue",
+      "next_step": "job_type",
+      "character": "Hiro",
+      "options": [
+        {
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/cefr_level/image.png",
+          "label": "I can make simple sentences",
+          "value": "A2"
+        },
+        {
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/cefr_level/image-1.png",
+          "label": "I can handle simple topics",
+          "value": "B1"
+        },
+        {
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/cefr_level/image-2.png",
+          "label": "I can discuss many topics but struggle with details",
+          "value": "B2"
+        },
+        {
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/cefr_level/image-3.png",
+          "label": "I'm fluent but need more confidence",
+          "value": "C1+"
+        }
+      ],
+      "character_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/hiro_target_transparent.png"
+    },
+    {
+      "step_id": "job_type",
+      "type": "multiple_choice",
+      "title": "Got you! Which best fits your job?",
+      "sub_title": "",
+      "action_label": "Continue",
+      "next_step": "topic_selection",
+      "character": "Hiro",
+      "options": [
+        {
+          "emoji": "💼",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/so_how/image.png",
+          "label": "Office Worker",
+          "value": "office_worker"
+        },
+        {
+          "emoji": "💬",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/so_how/image-1.png",
+          "label": "Tech Professional",
+          "value": "tech_professional"
+        },
+        {
+          "emoji": "🌴",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/so_how/image-2.png",
+          "label": "Sales & Marketing",
+          "value": "sales_marketing"
+        },
+        {
+          "emoji": "😂",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/so_how/image-3.png",
+          "label": "Customer support",
+          "value": "customer_support"
+        },
+        {
+          "emoji": "📰",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/so_how/image-4.png",
+          "label": "Finance",
+          "value": "finance"
+        },
+        {
+          "emoji": "🍜",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/so_how/image-5.png",
+          "label": "Education",
+          "value": "education"
+        },
+        {
+          "emoji": "🎬",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/so_how/image-6.png",
+          "label": "Hospitality & Travel",
+          "value": "hospitality_travel"
+        },
+        {
+          "emoji": "🎵",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/so_how/image-7.png",
+          "label": "Healthcare",
+          "value": "healthcare"
+        },
+        {
+          "emoji": "🧩",
+          "emoji_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/so_how/image-8.png",
+          "label": "Something else",
+          "value": "other"
+        }
+      ],
+      "character_image": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/app/so_how/Hiro.png"
+    },
+    {
+      "step_id": "sign_in",
+      "type": "auth",
+      "title": "Hey hey! You're back! 👋",
+      "sub_title": "",
+      "image_url": "https://blablo-storage-prod.s3.ap-southeast-1.amazonaws.com/s3/onboarding-mascot-2.jpg",
+      "next_step": "onboarding_done",
+      "character": "Hiro",
+      "description": "Adventure continues ✨",
+      "auth_methods": [
+        {
+          "provider": "google",
+          "label": "Sign in with Google"
+        },
+        {
+          "provider": "facebook",
+          "label": "Sign in with Facebook"
+        }
+      ]
+    }
+  ]
+}
+
+// api onbroading
+app.get('/api/v1/onboarding', (req,res) => {
+  res.json(onbroading);
+});
+
+
 // API tổng quát
 app.get('/stories', (req, res) => {
   res.json(tasks);
