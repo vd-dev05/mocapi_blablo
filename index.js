@@ -337,12 +337,18 @@ app.get('/api/playlists', (req, res) => {
 
   if (!deviceId) {
     return res.status(404).json({ error: 'Device_id is required' });
-  }
+  }  
 
   res.json(tasks);
 });
 // Api xoa list Ui 
 app.delete('/api/playlists/:id', (req, res) => {
+  const deviceId = req.headers['user_id'];
+
+  if (!deviceId) {
+    return res.status(404).json({ error: 'device_id is required in header' });
+  }
+
   const storyId = parseInt(req.params.id);
   const index = tasks.findIndex(task => task.id === storyId);
 
