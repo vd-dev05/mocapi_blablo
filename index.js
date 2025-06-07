@@ -332,9 +332,28 @@ app.get('/api/v1/onboarding', (req,res) => {
 
 
 // API tổng quát
-app.get('/stories', (req, res) => {
+app.get('/api/playlists', (req, res) => {
+  const deviceId = req.query.user_id;
+
+  if (!deviceId) {
+    return res.status(404).json({ error: 'Device_id is required' });
+  }
+
   res.json(tasks);
 });
+// Api xoa list Ui 
+app.delete('/api/playlists/:id', (req, res) => {
+  const storyId = parseInt(req.params.id);
+  const index = tasks.findIndex(task => task.id === storyId);
+
+  if (index === -1) {
+    return res.status(404).json({ error: 'Story not found' });
+  }
+
+  tasks.splice(index, 1);
+  res.json({ message: 'Story deleted successfully' });
+});
+
 
 // API chi tiết cho từng bài học
 app.get('/stories/:id', (req, res) => {
