@@ -40,7 +40,7 @@ console.log(`Time to load all JSON files: ${end - start} ms`);
 
 // api onbroading
 app.get('/api/v1/onboarding', (req,res) => {
-  res.json(onbroading);
+  res.json(onboarding);
 });
 
 
