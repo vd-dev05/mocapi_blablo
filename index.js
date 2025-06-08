@@ -70,7 +70,10 @@ app.delete('/api/playlists/:id', (req, res) => {
   }
 
   tasks.splice(index, 1);
-  res.json({ message: 'Story deleted successfully' });
+   res.json({
+    message: 'Story deleted successfully',
+    data: tasks
+  });
 });
 
 
