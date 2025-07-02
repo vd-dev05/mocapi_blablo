@@ -14,7 +14,10 @@ app.use(cors());
 // create config model file 
 const onbroadingFile = path.join(__dirname, 'data', 'onbroading.json');
 const lessonFile = path.join(__dirname, 'data', 'lesson.json');
-const storyFile= path.join(__dirname, 'data', 'story.json');
+const storyFile = path.join(__dirname, 'data', 'story.json');
+const quests = JSON.parse(
+  fs.readFileSync(path.join(__dirname, 'data', 'quests.json'), 'utf8')
+);
 
 // func read file 
 function readOnboarding() {
@@ -25,7 +28,7 @@ function readStories() {
   return JSON.parse(fs.readFileSync(storyFile, 'utf-8'));
 }
 
-function readLessons(){
+function readLessons() {
   return JSON.parse(fs.readFileSync(lessonFile, 'utf-8'));
 }
 
@@ -38,8 +41,45 @@ let taskDetails = readStories(); // giả sử story.json là chi tiết story
 const end = Date.now();
 console.log(`Time to load all JSON files: ${end - start} ms`);
 
+/**
+ * GET /api/scenarios/learning-journeys
+ * Params: week (number)
+ * - week=1: trả về full quests
+ * - week>1: chỉ trả về id & title của mỗi quest
+ */
+app.get('/api/scenarios/learning-journeys', (req, res) => {
+  const week = parseInt(req.query.week, 10) || 1;
+
+  if (week === 1) {
+    return res.json({ quests });
+  }
+
+  // week > 1: chỉ trả id và title
+  const summary = quests.map(q => ({
+    id: q.id,
+    title: q.title
+  }));
+  return res.json({ quests: summary });
+});
+/**
+ * GET /api/scenarios/:questId
+ * Trả về chi tiết quest (full object) với delay 4s
+ */
+app.get('/api/scenarios/:questId', async (req, res) => {
+  const { questId } = req.params;
+  const quest = quests.find(q => q.id === questId);
+
+  // Mô phỏng delay để test loading
+  await new Promise(r => setTimeout(r, 4000));
+
+  if (!quest) {
+    return res.status(404).json({ error: 'Quest not found' });
+  }
+  return res.json({ quest });
+});
+
 // api onbroading
-app.get('/api/v1/onboarding', (req,res) => {
+app.get('/api/v1/onboarding', (req, res) => {
   res.json(onboarding);
 });
 
@@ -50,7 +90,7 @@ app.get('/api/playlists', (req, res) => {
 
   if (!deviceId) {
     return res.status(404).json({ error: 'Device_id is required' });
-  }  
+  }
 
   res.json(tasks);
 });
@@ -70,7 +110,7 @@ app.delete('/api/playlists/:id', (req, res) => {
   }
 
   tasks.splice(index, 1);
-   res.json({
+  res.json({
     message: 'Story deleted successfully',
     data: tasks
   });
